@@ -8,7 +8,7 @@ const requestHandles = (req, res) =>{
         res.write('<head>')
         res.write('</head>')
         res.write('<body>')
-        res.write('<form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form>')
+        res.write('<form action="/message" method="POST"><input type="text" name="message"><button type="submit">dasdasd</button></form>')
         res.write('</body>')
         res.write('</html>')
         return res.end()
