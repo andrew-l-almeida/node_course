@@ -9,8 +9,10 @@
 
 const http = require('http')
 
-function rqListener(req, res){
 
-}
 
-http.createServer(); //Create a server 
+const server = http.createServer(function(req, res){
+    console.log(req)
+}); //Create a server 
+
+server.listen(3000)
