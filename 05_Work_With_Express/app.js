@@ -8,6 +8,7 @@ const shopRoutes = require('./routes/shop')
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false})) //Middleware to parse the body requests
+app.use(express.static(path.join(__dirname, 'public'))) // Serve static archives such as css or imagens files etc
 
 app.use('/admin', adminRoutes)
 app.use(shopRoutes)
