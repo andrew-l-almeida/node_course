@@ -4,6 +4,7 @@ const requestHandles = (req, res) =>{
     const url = req.url
     const method = req.method
     if(url === '/'){
+        res.setHeader('Content-Type', 'text/html')
         res.write('<html>')
         res.write('<head>')
         res.write('</head>')
@@ -18,7 +19,7 @@ const requestHandles = (req, res) =>{
         req.on('data', (chunk) =>{
             body.push(chunk)
         });
-        req.on('end', ()=>{
+        return req.on('end', ()=>{
             const parsedBody = Buffer.concat(body).toString();
 
             const message = parsedBody.split('=')[1]
@@ -26,11 +27,11 @@ const requestHandles = (req, res) =>{
             fs.writeFile('message.txt', message, err =>{
                 res.statusCode = 302;
                 res.setHeader('Location', '/');
-                
+                return res.end()
             });
         })
     }
-    res.setHeader('Content-Type', 'text/html')
+    //res.setHeader('Content-Type', 'text/html')
     res.write('<html>')
     res.write('<head>')
     res.write('</head>')
@@ -40,7 +41,7 @@ const requestHandles = (req, res) =>{
     res.write('</h1>')
     res.write('</body>')
     res.write('</html>')
-    return res.end()   
+    res.end()   
 }
 module.exports = requestHandles
 
