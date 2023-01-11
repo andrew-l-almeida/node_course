@@ -15,5 +15,5 @@ app.use((req, res) =>{
     res.status(404).sendFile(path.join(__dirname, 'views', '404.html'))
 })
 
-console.log('listin in: localhost:3000')
+console.log('listen in: http://localhost:3000')
 app.listen(3000)
