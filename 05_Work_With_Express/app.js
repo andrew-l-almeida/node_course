@@ -10,5 +10,9 @@ app.use(bodyParser.urlencoded({extended: false})) //Middleware to parse the body
 
 app.use(adminRoutes)
 app.use(shopRoutes)
+app.use((req, res) =>{
+    res.send('<h1>Page not found</h1>')
+})
+
 
 app.listen(3000)
