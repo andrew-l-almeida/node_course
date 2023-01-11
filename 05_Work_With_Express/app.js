@@ -8,7 +8,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: false})) //Middleware to parse the body requests
 
-app.use(adminRoutes)
+app.use('/admin', adminRoutes)
 app.use(shopRoutes)
 app.use((req, res) =>{
     res.send('<h1>Page not found</h1>')
