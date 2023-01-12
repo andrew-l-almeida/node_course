@@ -1,34 +1,25 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title #{title}
-        link(rel="stylesheet", href="/css/main.css")
-        link(rel="stylesheet", href="/css/product.css")
-    body 
-        header.main-header
-            nav.main-header__nav 
-                ul.main-header__item-list 
-                    li.main-header__item 
-                        a.active(href="/") Shop
-                    li.main-header__item 
-                        a(href="/admin/add-product") Add Product
+extends layouts/main-layout.pug
 
-        main 
-            if prods.length > 0
-                each product in prods 
-                    .grid 
-                        article.card.product-item 
-                            header.card__header
-                                h1.product__title #{product.title}
-                            .card__image 
-                                img(src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUPQQL2RxlJlPLeIMtK80ttEj8YNhwohIYqM6NlKS6PUtyASHzc-f_e2tPs6t5cfjxJ3U&usqp=CAU", alt="A book")
-                            .card__content 
-                                h2.product__price R$19,99
-                                p.product__description A very interesting book about so many even 
-                            .card__actions 
-                                button.btn Add to cart
-            else 
-                h1 No Products
+block styles 
+    link(rel="stylesheet", href="/css/product.css")
+    link(rel="stylesheet", href="/css/forms.css")
+
+block content 
+    main 
+        if prods.length > 0
+            each product in prods 
+                .grid 
+                    article.card.product-item 
+                        header.card__header
+                            h1.product__title #{product.title}
+                        .card__image 
+                            img(src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUPQQL2RxlJlPLeIMtK80ttEj8YNhwohIYqM6NlKS6PUtyASHzc-f_e2tPs6t5cfjxJ3U&usqp=CAU", alt="A book")
+                        .card__content 
+                            h2.product__price R$19,99
+                            p.product__description A very interesting book about so many even 
+                        .card__actions 
+                            button.btn Add to cart
+        else 
+            h1 No Products
+        
+
