@@ -7,8 +7,15 @@
     <title><%=title%></title>
 </head>
 <body>
-    <%for(name of users){%>
-        <h1><%=name.name%></h1>
-    <%}%>
+    <ul class="ul_name">
+        <div>
+            <%for(name of users){%>
+                <li><%=name.name%></li>
+            <%}%>
+        </div>
+            
+        
+    </ul>
+    
 </body>
 </html>
