@@ -7,3 +7,6 @@ html(lang="en")
         title #{title}
     body
         h1 Add User
+        form(action="/users", method="post")
+            input(type="text" name="name" id="name")
+            button(type="submit") Submit

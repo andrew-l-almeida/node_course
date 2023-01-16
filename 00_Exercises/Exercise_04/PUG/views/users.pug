@@ -7,3 +7,7 @@ html(lang="en")
         title #{title}
     body 
         h1 List of Users:
+        each user in users 
+            .usuarios 
+                h2 Name: #{user.name}
+                p id: #{user.id}
