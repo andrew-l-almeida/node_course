@@ -11,7 +11,7 @@ exports.getAddProduct = (req, res, next) => {
 
 exports.postAddProduct = (req, res, next) => {
     const title = req.body.title;
-    const imageURL = req.body.imageURL;
+    const imageURL = req.body.imageUrl;
     const description = req.body.description;
     const price = req.body.price;
 
