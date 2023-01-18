@@ -5,7 +5,7 @@ const p = path.join(path.dirname(require.main.filename), 'data', 'products.json'
 
 const getProductsFromFile = (cb) =>{
         fs.readFile(p, (err, fileContent) =>{
-            if(err){
+            if(err){mmmmmm
                 cb([])
             }else{
                 cb(JSON.parse(fileContent))
