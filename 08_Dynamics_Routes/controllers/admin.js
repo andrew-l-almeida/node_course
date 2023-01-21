@@ -3,9 +3,9 @@ const Product = require('../models/product')
 exports.getAddProduct = (req, res, next) => {
     res.render('admin/edit-product', {title: 'Add Product', 
     path:'/admin/add-product', 
-    editing: false
+    editing: false 
     })
-}
+};
 
 exports.postAddProduct = (req, res, next) => {
     const title = req.body.title;
@@ -13,7 +13,7 @@ exports.postAddProduct = (req, res, next) => {
     const description = req.body.description;
     const price = req.body.price;
 
-    const product = new Product(title, imageURL, description, price)
+    const product = new Product(null,title, imageURL, description, price)
     product.save()
     res.redirect('/');
 };
@@ -36,7 +36,7 @@ exports.getEditProduct = (req, res, next) => {
         })
     });
     
-}
+};
 
 exports.getProducts = (req, res, next) => {
     Product.fetchAll((products) =>{
@@ -46,4 +46,8 @@ exports.getProducts = (req, res, next) => {
             path: '/admin/products', 
         })
     })
+};
+
+exports.postEditProducts = (req, res, next) =>{
+
 }
