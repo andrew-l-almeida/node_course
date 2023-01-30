@@ -3,11 +3,11 @@ const Cart = require('../models/cart')
 
 exports.getProducts = async (req, res, next) => {
     try{
-        const products = await Product.fetchAll()
+        const products = await Product.findAll()
         await res.render('shop/product-list', {
-            prods: products, 
-            title: 'All Products', 
-            path: '/products', 
+                prods: products, 
+                title: 'Shop', 
+                path: '/products', 
         })
     }catch(err){
         console.log(err)
@@ -17,7 +17,7 @@ exports.getProducts = async (req, res, next) => {
 exports.getProduct = async (req, res, next) => {
     try{
         const prodId = req.params.productId
-        const product = await Product.findById(prodId)
+        const product = await Product.findByPk(prodId)
         await res.render('shop/product-detail', {product: product, title: 'Product Detail', path:'/products'});
     }catch(err){
         console.log(err)
@@ -26,7 +26,7 @@ exports.getProduct = async (req, res, next) => {
 
 exports.getIndex = async (req, res, next) =>{
     try{
-        const products = await Product.fetchAll()
+        const products = await Product.findAll()
         await res.render('shop/index', {
                 prods: products, 
                 title: 'Shop', 
@@ -84,3 +84,5 @@ exports.getOrders = (req, res, next) => {
         path: '/Orders'
     })
 }
+
+
