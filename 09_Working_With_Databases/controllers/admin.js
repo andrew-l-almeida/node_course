@@ -18,7 +18,7 @@ exports.postAddProduct = async (req, res, next) => {
         const description = req.body.description;
         const price = req.body.price;
         
-        Product.create({
+        req.user.createProduct({
             title: title,
             imageUrl: imageURL,
             description: description,
@@ -42,10 +42,12 @@ exports.getEditProduct = async (req, res, next) => {
             return res.redirect('/')
         }
         const prodId = req.params.productId;
-        const product = await Product.findByPk(prodId);
-        if(!product){
+        const products = await req.user.getProducts({where: {id: prodId}})
+        //const product = await Product.findByPk(prodId);
+        if(!products){
             return res.redirect('/')
         }
+        const product = products[0]
         await res.render('admin/edit-product', {
             title: 'Add Product', 
             path:'/admin/edit-product', 
