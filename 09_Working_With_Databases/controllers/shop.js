@@ -90,10 +90,19 @@ exports.postCart = (req, res, next) => {
 
 exports.postDeleteCartProduct = (req, res, next) => {
     const prodId = req.body.productId;
-    Product.findById(prodId, product => {
-        Cart.deleteProduct(prodId, product.price)
+    req.user.getCart()
+    .then(cart => {
+        return cart.getProducts({where: {id: prodId} });
+    })
+    .then(products => {
+        const product = products[0]
+        console.log('Executing Destroy sql Command')
+        product.cartItem.destroy()
+    })
+    .then(result => {
         res.redirect('/cart')
     })
+    .catch(err => console.log(err))
 }
 
 exports.getCheckkout = (req, res, next) => {
