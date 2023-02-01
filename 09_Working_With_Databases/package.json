@@ -20,7 +20,6 @@
     "express": "^4.16.3",
     "express-handlebars": "3.0",
     "mssql": "^9.1.1",
-    "pug": "^3.0.2",
     "sequelize": "^6.28.0",
     "tedious": "^15.1.2"
   }
